@@ -35,7 +35,6 @@ Teams define prompts, schemas, and expected behavior — then verify them throug
   
 
 ## Why Genum exists
-
 <p align="center">
   <img src="https://cdn.genum.ai/images/github_gif.gif" alt="Genum GitHub GIF" width="100%" />
 </p>
@@ -65,14 +64,6 @@ Genum exists to bring **software delivery discipline** to LLM instructions.
 
 ## Core principle: test-first AI development
 
-<p align="center">
-  <img
-    src="https://cdn.genum.ai/images/github_cicd.png"
-    alt="Genum Prompt CI/CD Lifecycle"
-    width="900"
-  />
-</p>
-
 Genum follows a strict rule:
 
 >  **Nothing is deployed unless it passes tests defined by the operator.**
@@ -101,6 +92,14 @@ Production only executes **already verified logic**.
   
 
 ## What Genum actually does
+
+<p align="center">
+  <img
+    src="https://cdn.genum.ai/images/github_cicd.png"
+    alt="Genum Prompt CI/CD Lifecycle"
+    width="900"
+  />
+</p>
 
 Genum provides CI/CD for LLM instructions.
 
