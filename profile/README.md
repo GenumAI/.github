@@ -258,6 +258,3 @@ Genum is open source.
 
 Contributions and critical feedback are welcome.
 
-
-- or a **GitHub vs GitLab tailored split** (they behave differently)
-```
