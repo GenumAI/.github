@@ -32,12 +32,12 @@ Genum is an open-source system that applies a **test-first CI/CD workflow to LLM
 
 Teams define prompts, schemas, and expected behavior — then verify them through structured and semantic tests **before anything reaches production**.
 
-  
-
-## Why Genum exists
 <p align="center">
   <img src="https://cdn.genum.ai/images/github_gif.gif" alt="Genum GitHub GIF" width="100%" />
 </p>
+  
+
+## Why Genum exists
 
 LLM-based systems are often deployed with one critical gap:
 
