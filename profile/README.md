@@ -40,6 +40,10 @@ Think:
 
 If prompts are business logic, Genum is the system that makes them **testable, reproducible, and safe to deploy**.
 
+<p align="center">
+  <img src="https://cdn.genum.ai/images/github_gif.gif" alt="Genum GitHub GIF" width="100%" />
+</p>
+
 ---
 
 ## Why Genum exists
@@ -93,6 +97,14 @@ Genum provides a full **PromptOps lifecycle**:
 6. Execute it via API or integration nodes  
 
 Prompts become **first-class, versioned artifacts** — not inline text inside apps, agents, or workflows.
+
+<p align="center">
+  <img
+    src="https://cdn.genum.ai/images/github_cicd.png"
+    alt="Genum Prompt CI/CD Lifecycle"
+    width="900"
+  />
+</p>
 
 ---
 
