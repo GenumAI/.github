@@ -19,304 +19,245 @@
   <img src="https://img.shields.io/docker/pulls/genum/core" />
 </p>
 
-# Genum
+---
 
+# **Genum is Cursor for Prompts — with CI/CD, Versioning, Execution, Integrations, and FinOps**
 
-**Test AI behavior before deployment — the same way you test code.**
+**Genum is an open-source PromptOps platform that lets teams develop, test, version, deploy, and run GenAI instructions the same way they ship production code.**
 
-  
+Think:
 
-Genum is an open-source system that applies a **test-first CI/CD workflow to LLM instructions**.
+**Genum = Cursor + GitHub + CI/CD + Execution + FinOps — for prompts**
 
-  
+| Genum Layer | What it does |
+|------|--------------|
+| Prompt IDE | Write & refine instructions |
+| Versioning | Git-style history & releases |
+| Testing | Strict + semantic regression tests |
+| CI/CD | Block deployments on failures |
+| Execution | APIs & Nodes |
+| FinOps | Cost, latency, usage visibility |
 
-Teams define prompts, schemas, and expected behavior — then verify them through structured and semantic tests **before anything reaches production**.
+If prompts are business logic, Genum is the system that makes them **testable, reproducible, and safe to deploy**.
 
-<p align="center">
-  <img src="https://cdn.genum.ai/images/github_gif.gif" alt="Genum GitHub GIF" width="100%" />
-</p>
-  
+---
 
 ## Why Genum exists
 
-LLM-based systems are often deployed with one critical gap:
+Most GenAI systems fail in production for one simple reason:
 
-  
+**prompts are not treated like code.**
 
-**they are not tested like production code.**
-
-  
-
-Prompts are:
-
-- changed manually
+In real systems, prompts are often:
+- edited manually
 - validated ad-hoc
-- deployed without regression coverage
-- trusted based on “seems to work”
+- deployed without regression tests
+- trusted because they “seem to work”
 
-  
+This leads to:
+- silent behavior drift  
+- broken automations  
+- unpredictable downstream effects  
 
-This makes production behavior fragile and unpredictable.
+Genum exists to bring **software delivery discipline** to GenAI instructions.
 
-Genum exists to bring **software delivery discipline** to LLM instructions.
+---
 
-  
+## Core rule: test-first AI delivery
 
-## Core principle: test-first AI development
+> **Nothing is deployed unless it passes tests defined by the operator.**
 
-Genum follows a strict rule:
+Genum:
+- does **not** enforce runtime policies
+- does **not** make autonomous decisions
+- does **not** run “AI controlling AI”
 
->  **Nothing is deployed unless it passes tests defined by the operator.**
-
-  
-
-There is:
-
-- no runtime policy enforcement
-- no autonomous decision-making
-- no “AI controlling AI” in production
-
-  
-
-All validation happens **before deployment**, using:
-
+All validation happens **before deployment** using:
 - synthetic datasets
 - real historical inputs
 - explicit expected outputs
 
-  
-
 Production only executes **already verified logic**.
 
-  
-  
+---
 
-## What Genum actually does
+## What Genum actually is
 
-<p align="center">
-  <img
-    src="https://cdn.genum.ai/images/github_cicd.png"
-    alt="Genum Prompt CI/CD Lifecycle"
-    width="900"
-  />
-</p>
+Genum provides a full **PromptOps lifecycle**:
 
-Genum provides CI/CD for LLM instructions.
+1. Write a prompt instruction + output schema  
+2. Define a test suite (strict + semantic)  
+3. Run tests locally or in CI  
+4. Commit only if all tests pass  
+5. Deploy a locked, versioned instruction  
+6. Execute it via API or integration nodes  
 
-Instead of embedding prompts directly into applications or agents, you:
-1. Write a prompt instruction and output schema
-2. Define a **test suite** for that instruction
-3. Run tests locally or in CI
-4. Commit only if all tests pass
-5. Deploy a locked, versioned instruction
+Prompts become **first-class, versioned artifacts** — not inline text inside apps, agents, or workflows.
 
-This makes LLM behavior reproducible and change-safe.
-  
+---
 
-## Tests are the source of truth
+## Tests define correctness
 
-In Genum, **tests define correctness**.
-A test consists of:
+In Genum, **tests are the source of truth**.
+
+A test includes:
 - input (text, context, tool state)
 - expected outcome
 - validation method
 
-Validation can be:
--  **strict** (exact match, schema, flags)
--  **semantic** (LLM-based judge comparing output to expectation)
+Validation types:
+- **Strict** — schema, exact match, flags
+- **Semantic** — LLM-based judge used only as a test assertion
 
-Semantic judges are **part of the test**, not a runtime authority.
+Semantic judges are **never runtime authorities**.
 
 They answer one question only:
 
->  *Does the output satisfy the expectation defined by the operator?*
+> *Does the output satisfy the expectation defined by the operator?*
 
+---
 
 ## Example: Unstructured → Structured extraction
 
-**Instruction:** extract order-related signals from emails.
+**Instruction**  
+Extract order-related signals from emails.
 
-**Test input:**
-
-```
+**Test input**
+```text
 "Please cancel order 45821. We no longer need delivery."
-```
+````
 
-
-**Expected output (defined in test):**
+**Expected output**
 
 ```json
 {
-	"order_cancelled": true,
-	"order_id": 45821
+  "order_cancelled": true,
+  "order_id": 45821
 }
 ```
 
-  
+Deployment is blocked unless:
 
-The test passes if:
+* schema is valid
+* values match expectations
+* or a semantic assertion confirms equivalence
 
-- schema is valid
-- values match expectation
-- or semantic assertion confirms equivalence
+---
 
-If the test fails, deployment is blocked.
+## Example: Chatbot with tools
 
-## Example: GenAI ChatBot with tools
+For a support bot, tests can assert:
 
-  
+* which tool must be called
+* required arguments
+* call order
+* whether the bot must *not* answer directly
 
-For a support bot with tools and a knowledge base, tests may assert:
-- which tool must be called
-- required arguments
-- call order
-- whether clarification is required
-- whether the bot must *not* answer directly
+Example semantic rule:
 
-Example semantic test:
+> “The bot must not provide an answer without calling `order_status`.”
 
-> “The bot must not provide an answer without calling the `order_status` tool.”
+If violated, the instruction cannot be deployed.
 
-If the behavior violates the test, the instruction cannot be deployed.
-
+---
 
 ## What Genum is NOT
 
 Genum is **not**:
 
-- a runtime policy engine
-- an agent framework
-- an autonomous decision system
+* a runtime policy engine
+* an agent framework
+* an autonomous decision system
+* a creative prompt playground
 
-Genum does **not** enforce behavior at runtime.
+Genum is **delivery infrastructure** for GenAI business logic.
 
-It ensures that **only pre-validated behavior can reach runtime**.
+---
 
+## Decoupling & delivery
 
-## Decoupling & delivery into runtime systems
+Genum keeps GenAI logic **separate from runtime orchestration**.
 
+You:
 
-Genum keeps GenAI business logic **separate** from runtime orchestration.
+* develop & validate logic in Genum
+* inject a **specific, versioned release** into runtime systems
 
-You develop and validate logic in Genum (tests → regression → commit), then **inject a specific, versioned release** into runtime systems:
--  **Public API**: retrieve and execute pinned versions of verified logic
--  **Genum Nodes**: connect verified logic to automation runtimes without copying prompts into workflows
+Delivery options:
 
+* **Public API** — retrieve pinned versions of verified logic
+* **Genum Nodes** — connect verified logic to automation platforms
 
-This makes runtime orchestration stable, while GenAI logic evolves safely through the same release discipline as code.
+Runtime stays stable.
+AI logic evolves safely through releases.
 
-  
+---
 
-## Why CI/CD for LLM instructions
+## FinOps: cost & latency visibility
 
-  
+Genum includes a FinOps layer that tracks:
 
-LLM instructions are business logic.
+* usage per prompt, model, and version
+* latency characteristics
+* cost per execution
 
-Changing them without tests is equivalent to deploying untested code.
+This enables:
 
+* model comparisons
+* cost-quality trade-offs
+* predictable AI operating costs
 
-Genum provides:
-- versioning
-- regression testing
-- reproducible deployments
-- auditable changes
-  
-So teams can evolve AI logic without breaking production.
-
-
-## Current capabilities
-
-  
-
-- **Versioned LLM instructions** (prompts) and output schemas
-- **Test suites** (strict + semantic) and regression testing
-- **Test-first CI/CD workflow** for AI business logic (commit only after tests pass)
-- **Decoupling of GenAI business logic from automation runtimes**
-- treat AI logic as an independent, testable artifact
-- avoid embedding prompts directly into orchestrators, agents, or application code
-- **Injection of tested, versioned GenAI logic into automation runtimes**
-- via **Public API** (version pinning / idempotent writes where applicable)
-- via **Genum Nodes** (connectors for orchestration environments)
-- Vendor-agnostic execution (cross-model compatible workflow)
-- Self-hosted, open-source deployment
-  
-
-## Roadmap
-  
-
-Genum is the foundation for higher-level tooling:
-
-- reusable instruction patterns
-- assistants that help generate tests
-- human-language → testable instructions
-- voice-driven definition of business logic
-
-  
-The invariant remains the same:
-
-**tests always come first.**
-
-  
-  
+---
 
 ## Who Genum is for
 
-Best fit:
-- platform and backend engineers
-- automation and integration teams
-- teams deploying LLM logic into production systems
-- organizations that treat AI behavior as code
+**Best fit**
 
-Probably not for:
-- creative prompting
-- runtime experimentation
-- agent demos without test discipline
+* platform & backend engineers
+* automation & integration teams
+* organizations deploying GenAI into production
+* teams that treat AI behavior as code
+
+**Probably not for**
+
+* creative prompting
+* live experimentation
+* agent demos without test discipline
+
+---
 
 ## Quickstart
 
 ```bash
 git clone https://github.com/genumai/genum.git
 cd genum
-
 docker-compose up -d
 ```
 
-  
+Docs: [https://docs.genum.ai](https://docs.genum.ai)
 
-Documentation: [https://docs.genum.ai](https://docs.genum.ai)
-
-  
-  
-  
+---
 
 ## Philosophy
 
-  
-
-Genum does not try to make AI “smart”.
+Genum does not try to make AI *smarter*.
 
 It makes AI **testable**.
 
 If behavior cannot be tested, it should not be deployed.
 
-  
-
-----------
-
-  
+---
 
 ## License & Community
 
-  
-
 Genum is open source.
 
-  
-
-- Website: [https://genum.ai](https://genum.ai/)
-- Docs: [https://docs.genum.ai](https://docs.genum.ai)
-- Community: [https://community.genum.ai](https://community.genum.ai)
-
+* Website: [https://genum.ai](https://genum.ai)
+* Docs: [https://docs.genum.ai](https://docs.genum.ai)
+* Community: [https://community.genum.ai](https://community.genum.ai)
 
 Contributions and critical feedback are welcome.
+
+
+- or a **GitHub vs GitLab tailored split** (they behave differently)
+```
