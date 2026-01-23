@@ -32,10 +32,10 @@ Think:
 | Genum Layer | What it does |
 |------|--------------|
 | Prompt IDE | Write & refine instructions |
+| Testing | Test-First approach, Strict + semantic regression tests |
 | Versioning | Git-style history & releases |
-| Testing | Strict + semantic regression tests |
 | CI/CD | Block deployments on failures |
-| Execution | APIs & Nodes |
+| Execution & Integration | APIs & Custon Nodes |
 | FinOps | Cost, latency, usage visibility |
 
 If prompts are business logic, Genum is the system that makes them **testable, reproducible, and safe to deploy**.
@@ -48,7 +48,7 @@ If prompts are business logic, Genum is the system that makes them **testable, r
 
 ## Why Genum exists
 
-Most GenAI systems fail in production for one simple reason:
+Most GenAI systems fail in enterprise automation for one simple reason:
 
 **prompts are not treated like code.**
 
@@ -202,6 +202,20 @@ Delivery options:
 
 Runtime stays stable.
 AI logic evolves safely through releases.
+
+---
+
+## Cross-Vendor with Support for Custom LLMs
+
+Genum keeps your business-logic **vendor-agnostic**. 
+Out-of-the-box-Support for major commercial providers, plus support for custom LLMs.
+
+### Custom LLMs
+
+<p align="center">
+  <img src="https://cdn.genum.ai/images/github_gif.gif" alt="Genum custom LLM Support" width="100%" />
+</p>
+
 
 ---
 
