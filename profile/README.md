@@ -213,7 +213,7 @@ Out-of-the-box-Support for major commercial providers, plus support for custom L
 ### Custom LLMs
 
 <p align="center">
-  <img src="https://cdn.genum.ai/images/github_gif.gif" alt="Genum custom LLM Support" width="100%" />
+  <img src="https://cdn.genum.ai/images/custom_llm.gif" alt="Genum custom LLM Support" width="100%" />
 </p>
 
 
