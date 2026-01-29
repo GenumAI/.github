@@ -31,6 +31,8 @@ Think:
 
 | Genum Layer | What it does |
 |------|--------------|
+| Data | Text and Blobs |
+| LLM | Multi-vendor + Customm LLM |
 | Prompt IDE | Write & refine instructions |
 | Testing | Test-First approach, Strict + semantic regression tests |
 | Versioning | Git-style history & releases |
@@ -282,7 +284,7 @@ Genum is open source.
 * Website: [https://genum.ai](https://genum.ai)
 * Docs: [https://docs.genum.ai](https://docs.genum.ai)
 * Community: [https://community.genum.ai](https://community.genum.ai)
-* Reddit: [https://www.reddit.com/r/PromptEngineering/comments/1qnn6bu/genum_testfirst_promptops_for_enterprise_genai/]([https://community.genum.ai](https://www.reddit.com/r/PromptEngineering/comments/1qnn6bu/genum_testfirst_promptops_for_enterprise_genai/))
+* Reddit: [https://www.reddit.com/r/PromptEngineering/comments/1qnn6bu/genum_testfirst_promptops_for_enterprise_genai/](https://www.reddit.com/r/PromptEngineering/comments/1qnn6bu/genum_testfirst_promptops_for_enterprise_genai/)
 
 Contributions and critical feedback are welcome.
 
