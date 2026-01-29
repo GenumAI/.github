@@ -44,6 +44,7 @@ If prompts are business logic, Genum is the system that makes them **testable, r
   <img src="https://cdn.genum.ai/images/github_gif.gif" alt="Genum GitHub GIF" width="100%" />
 </p>
 
+
 ---
 
 ## Why Genum exists
@@ -281,6 +282,7 @@ Genum is open source.
 * Website: [https://genum.ai](https://genum.ai)
 * Docs: [https://docs.genum.ai](https://docs.genum.ai)
 * Community: [https://community.genum.ai](https://community.genum.ai)
+* Reddit: [https://www.reddit.com/r/PromptEngineering/comments/1qnn6bu/genum_testfirst_promptops_for_enterprise_genai/]([https://community.genum.ai](https://www.reddit.com/r/PromptEngineering/comments/1qnn6bu/genum_testfirst_promptops_for_enterprise_genai/))
 
 Contributions and critical feedback are welcome.
 
